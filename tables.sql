@@ -14,7 +14,7 @@ drop table Lodging;
 drop table Review;
 
 create table Customer (
-	id integer primary key,
+	id serial primary key,
 	dob date,
 	email varchar(128),
 	firstname varchar(64),
@@ -22,7 +22,7 @@ create table Customer (
 );
 
 create table Party (
-	id integer primary key,
+	id serial primary key,
 	owner integer not null,
 	agentID integer not null,
 	foreign key agentID references Agent.id,
@@ -38,7 +38,7 @@ create table Party_Customers (
 );
 
 create table Agent (
-	id integer primary key,
+	id serial primary key,
 	firstname varchar(128),
 	lastname varchar(128),
 );
@@ -51,7 +51,7 @@ create table Agent_Assignments(
 );
 
 create table Transportation (
-	id integer primary key,
+	id serial primary key,
 	type varchar(64),
 	phonenumber char(10),
 	company varchar(64),
@@ -71,7 +71,7 @@ create table Party_Transports(
 );
 
 create table Attraction (
-	id integer primary key,
+	id serial primary key,
 	destinationID integer not null,
 	description varchar(256),
 	address varchar(64),
@@ -80,7 +80,7 @@ create table Attraction (
 );
 
 create table Event (
-	id integer primary key,
+	id serial primary key,
 	attractionID integer not null,
 	description varchar(256),
 	address varchar(64),
@@ -108,7 +108,7 @@ create table Party_Events (
 );
 
 create table Destination (
-	id integer primary key,
+	id serial primary key,
 	city varchar(32),
 	country varchar(32)
 );
@@ -125,7 +125,7 @@ create table Party_Destinations (
 );
 
 create table Lodging (
-	id integer primary key,
+	id serial primary key,
 	destinationID integer not null,
 	type varchar(32),
 	company varchar(64),
@@ -136,7 +136,7 @@ create table Lodging (
 );
 
 create table Review (
-	id integer primary key,
+	id serial primary key,
 	transportationID integer,
 	lodgingID integer,
 	attractionID integer,
