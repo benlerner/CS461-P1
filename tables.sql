@@ -76,10 +76,19 @@ create table Attraction (
 	description varchar(256),
 	address varchar(64),
 	name varchar(64)
+	foreign key destinationID references Destination.id
+);
+
+create table Event (
+	id integer primary key,
+	attractionID integer not null,
+	description varchar(256),
+	address varchar(64),
+	name varchar(64)
 	time date,
 	capacity integer,
 	RSVP bit,
-	foreign key destinationID references Destination.id
+	foreign key attractionID references Attraciton.id
 );
 
 create table Party_Attractions (
@@ -95,7 +104,7 @@ create table Party_Events (
 	eventID integer not null,
 	primary key (partyID, eventID),
 	foreign key partyID references Party.id,
-	foreign key eventID references Attraction.id
+	foreign key eventID references Event.id
 );
 
 create table Destination (
@@ -109,6 +118,7 @@ create table Party_Destinations (
 	destinationID integer not null,
 	visitFrom date not null,
 	visitTo date not null,
+	primary key(partyID, destinationID, visitFrom)
 	foreign key partyID references Party.id,
 	foreign key destinationID references Destination.id,
 	check (visitFrom < visitTo)
