@@ -6,6 +6,7 @@ drop table Agent_Assignments;
 drop table Transportation;
 drop table Party_Transports;
 drop table Attraction;
+drop table Event;
 drop table Party_Attractions;
 drop table Party_Events;
 drop table Destination;
@@ -143,10 +144,10 @@ create table Review (
 	eventID integer,
 	rating integer not null,
 	comment varchar(256),
-	foreign key transportationID references Transportation.id,
-	foreign key lodgingID references Lodging.id,
-	foreign key attractionID references Attraction.id,
-	foreign key eventID references Attraction.id
+	foreign key transportationID references Transportation.id on delete cascade,
+	foreign key lodgingID references Lodging.id on delete cascade,
+	foreign key attractionID references Attraction.id on delete cascade,
+	foreign key eventID references Event.id on delete cascade
 );
 
 insert into Customer (dob, email, firstname, lastname) values ('1983-03-01', 'jdoe@gmail.com', 'John', 'Doe');
