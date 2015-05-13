@@ -53,9 +53,9 @@ create table Agent_Assignments(
 create table Transportation (
 	id serial primary key,
 	type varchar(64),
-	phonenumber char(10),
+	phonenumber varchar(10),
 	company varchar(64),
-	address varchar(64),
+	website varchar(64),
 	capacity integer
 );
 
@@ -88,7 +88,7 @@ create table Event (
 	time date,
 	capacity integer,
 	RSVP bit,
-	foreign key attractionID references Attraciton.id
+	foreign key attractionID references Attraction.id
 );
 
 create table Party_Attractions (
@@ -130,7 +130,7 @@ create table Lodging (
 	type varchar(32),
 	company varchar(64),
 	address varchar(64),
-	phonenumber char(10),
+	phonenumber varchar(10),
 	capacity integer,
 	foreign key destinationID references Destination.id
 );
@@ -148,3 +148,25 @@ create table Review (
 	foreign key attractionID references Attraction.id,
 	foreign key eventID references Attraction.id
 );
+
+insert into Customer (dob, email, firstname, lastname) values ('1983-03-01', 'jdoe@gmail.com', 'John', 'Doe');
+insert into Customer (dob, email, firstname, lastname) values ('1991-09-14', 'bob123@gmail.com', 'Bob', 'Jameson');
+insert into Customer (dob, email, firstname, lastname) values ('1989-11-05', 'mt185@yahoo.com', 'Michelle', 'Thompson');
+
+insert into Agent (firstname, lastname) values ('Betty', 'Clark');
+
+insert into Transportation (type, phonenumber, company, website, capacity) values ('Bus', '18774626342', 'Megabus', 'us.megabus.com', 50);
+insert into Transportation (type, phonenumber, company, website, capacity) values ('Air', '18004552720', 'Delta Airlines', 'www.delta.com', 200);
+
+insert into Destination (city, country) values ('Miami', 'USA');
+insert into Destination (city, country) values ('Myrtle Beach', 'USA');
+
+insert into Attraction (destinationID, description, address, name) values (1, 'Miami Beach is a coastal resort city in Miami-Dade County, Florida, United States.', null, 'Miami Beach');
+insert into Attraction (destinationID, description, address, name) values (1, 'The Miami Seaquarium is a 38-acre oceanarium located on the island of Virginia Key in Biscayne Bay, Miami-Dade County, Florida, United States and is located near downtown Miami. Founded in 1955, it is the oldest oceanarium in the United States.', '4400 Rickenbacker Causeway, Key Biscayne, FL 33149', 'Miami Seaquarium');
+
+insert into Attraction (destinationID, description, address, name) values (2, 'Broadway at the Beach is a shopping center located in Myrtle Beach, South Carolina. Since its inception in 1996, it has grown to be one of Myrtle Beach''s premier shopping destinations.', null, 'Broadway At the Beach');
+insert into Attraction (destinationID, description, address, name) values (2, 'Family Kingdom Amusement Park is the only seaside amusement park in Myrtle Beach, South Carolina. Located on Ocean Boulevard, in the heart of Myrtle Beach, the amusement park has 37 rides for adults and children of all ages, including thrill rides, family rides, kiddie rides and go karts.', '300 S Ocean Blvd, Myrtle Beach, SC 29577', 'Family Kingdom Amusement Park');
+
+insert into Lodging (destinationID, type, company, address, phonenumber, capacity) values (1, 'Hotel', 'Red Roof Plus+', '3401 Northwest Le Jeune Rd, Miami, FL 33142', '3058714221', 5);
+insert into Lodging (destinationID, type, company, address, phonenumber, capacity) values (1, 'Hotel', 'Four Seasons Hotel Miami', '1435 Brickell Ave, Miami, FL 33131', '3053583535', 5);
+insert into Lodging (destinationID, type, company, address, phonenumber, capacity) values (2, 'Hotel', 'Carolinian Beach Resort', '2506 N Ocean Blvd, Myrtle Beach, SC 29577', '8434486861', 5);
