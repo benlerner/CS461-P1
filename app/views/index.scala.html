@@ -1,0 +1,88 @@
+
+	<script type='text/javascript' src='@routes.Assets.at("js/index.js")'></script>
+	
+	<table>
+		<tr>
+			<form action="@routes.Application.selectPartyMembers()" method="post">
+			<td>First Name</td>
+			<td><input type="text" name="firstname" /></td>
+		</tr>
+		<tr>
+			<td>Last Name</td>
+			<td><input type="text" name="lastname" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>View Party Members</button></td>
+			</form>
+		</tr>
+		<tr>
+			<td>--------</td>
+			<td>----------------</td>
+		</tr>
+
+		<tr>
+		  <form action="@routes.Application.getEventDescriptionByParty()" method="get">
+			<td colspan=2><button>View Customer Json</button></td>
+			</form>
+		</tr>
+	</table>
+	
+	<div id="customers"></div>
+
+	<script>
+		document.getElementById('customers').innerHTML = httpGet('/customersTable');
+	</script>
+
+	</br></br><hr></br></br>
+
+	<table>
+		<tr>
+			<form action="@routes.Application.getDescriptions()" method="post">
+			<td>Party ID</td>
+			<td><input type="text" name="partyid" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>Get Event Descriptions</button></td>
+			</form>
+		</tr>
+		<tr>
+			<td>--------</td>
+			<td>----------------</td>
+		</tr>
+
+	</table>
+	
+	<div id="terms"></div>
+
+	<script>
+		document.getElementById('terms').innerHTML = httpGet('/eventsTable');
+
+	<table>
+		<tr>
+			<form action="@routes.Application.selectPartyMembers()" method="post">
+			<td>First Name</td>
+			<td><input type="text" name="firstname" /></td>
+		</tr>
+		<tr>
+			<td>Last Name</td>
+			<td><input type="text" name="lastname" /></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><button>View Party Members</button></td>
+			</form>
+		</tr>
+		<tr>
+			<td>--------</td>
+			<td>----------------</td>
+		</tr>
+	</table>
+
+	<div id="descriptions"></div>
+
+	<script>
+		document.getElementById('descriptions').innerHTML = httpGet('/eventsTable');
+	</script>
+	
